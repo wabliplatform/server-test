@@ -1,0 +1,145 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: lampralexandros@gmail.com
+  description: This is a sample openApi document
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://wabli.netlify.app/
+  title: TempApi
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+- description: Local server
+  url: http://localhost:8080/v1
+security:
+- {}
+tags:
+- description: not yet ready
+  name: er
+paths:
+  /er:
+    post:
+      operationId: createer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/er'
+        description: data to be created
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/er'
+          description: seccessful operation
+      summary: Creates the data
+      tags:
+      - er
+      x-eov-operation-handler: controllers/ErController
+  /er/{erId}:
+    delete:
+      operationId: deleteer
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: erId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: successful operation
+      summary: Delete the element
+      tags:
+      - er
+      x-eov-operation-handler: controllers/ErController
+    get:
+      operationId: geter
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: erId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/er'
+          description: seccessful operation
+      summary: Get the element
+      tags:
+      - er
+      x-eov-operation-handler: controllers/ErController
+    put:
+      operationId: updateer
+      parameters:
+      - description: the Id parameter
+        explode: false
+        in: path
+        name: erId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/er'
+        description: data to be updated
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/er'
+          description: seccessful operation
+      summary: Updates the element
+      tags:
+      - er
+      x-eov-operation-handler: controllers/ErController
+  /er/getAll:
+    get:
+      operationId: getAller
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/er'
+                type: array
+          description: successful operation
+      summary: Get all the data
+      tags:
+      - er
+      x-method-getAll: "true"
+      x-eov-operation-handler: controllers/ErController
+components:
+  schemas:
+    er:
+      example:
+        _id: _id
+        er: 0.8008281904610115
+      properties:
+        _id:
+          type: string
+        er:
+          format: double
+          type: number
+      required:
+      - er
+      type: object
