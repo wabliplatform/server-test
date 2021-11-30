@@ -13,22 +13,22 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-- description: Local server
+- description: local host
   url: http://localhost:8080/v1
 security:
 - {}
 tags:
 - description: not yet ready
-  name: er
+  name: test
 paths:
-  /er:
+  /test:
     post:
-      operationId: createer
+      operationId: createtest
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/er'
+              $ref: '#/components/schemas/test'
         description: data to be created
         required: true
       responses:
@@ -36,20 +36,20 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/er'
+                $ref: '#/components/schemas/test'
           description: seccessful operation
       summary: Creates the data
       tags:
-      - er
-      x-eov-operation-handler: controllers/ErController
-  /er/{erId}:
+      - test
+      x-eov-operation-handler: controllers/TestController
+  /test/{testId}:
     delete:
-      operationId: deleteer
+      operationId: deletetest
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: erId
+        name: testId
         required: true
         schema:
           type: string
@@ -59,15 +59,15 @@ paths:
           description: successful operation
       summary: Delete the element
       tags:
-      - er
-      x-eov-operation-handler: controllers/ErController
+      - test
+      x-eov-operation-handler: controllers/TestController
     get:
-      operationId: geter
+      operationId: gettest
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: erId
+        name: testId
         required: true
         schema:
           type: string
@@ -77,19 +77,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/er'
+                $ref: '#/components/schemas/test'
           description: seccessful operation
       summary: Get the element
       tags:
-      - er
-      x-eov-operation-handler: controllers/ErController
+      - test
+      x-eov-operation-handler: controllers/TestController
     put:
-      operationId: updateer
+      operationId: updatetest
       parameters:
       - description: the Id parameter
         explode: false
         in: path
-        name: erId
+        name: testId
         required: true
         schema:
           type: string
@@ -98,48 +98,47 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/er'
+              $ref: '#/components/schemas/test'
         description: data to be updated
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/er'
+                $ref: '#/components/schemas/test'
           description: seccessful operation
       summary: Updates the element
       tags:
-      - er
-      x-eov-operation-handler: controllers/ErController
-  /er/getAll:
+      - test
+      x-eov-operation-handler: controllers/TestController
+  /test/getAll:
     get:
-      operationId: getAller
+      operationId: getAlltest
       responses:
         "200":
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/er'
+                  $ref: '#/components/schemas/test'
                 type: array
           description: successful operation
       summary: Get all the data
       tags:
-      - er
+      - test
       x-method-getAll: "true"
-      x-eov-operation-handler: controllers/ErController
+      x-eov-operation-handler: controllers/TestController
 components:
   schemas:
-    er:
+    test:
       example:
+        test: test
         _id: _id
-        er: 0.8008281904610115
       properties:
         _id:
           type: string
-        er:
-          format: double
-          type: number
+        test:
+          type: string
       required:
-      - er
+      - test
       type: object
